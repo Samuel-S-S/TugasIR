@@ -1,0 +1,8 @@
+Jalankan program pada class SearchEngine.java
+Masukan query(Boolean\Wildcard\Typo) pada terminal
+Keluar dari program melalui perintah "exit"
+
+Contoh query:
+aerodynamic AND wing
+boundari (akan dikoreksi menjadi boundary)
+aero*

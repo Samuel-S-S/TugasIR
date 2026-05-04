@@ -1,0 +1,1 @@
+the calculation of the lift distribution on a swept wing in subsonic flow.

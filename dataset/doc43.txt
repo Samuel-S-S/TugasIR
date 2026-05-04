@@ -1,0 +1,1 @@
+experimental study of the heat transfer to a turbine blade.

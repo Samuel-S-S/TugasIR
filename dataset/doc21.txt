@@ -1,0 +1,1 @@
+aerodynamic forces on a rectangular wing oscillating in a supersonic flow.
