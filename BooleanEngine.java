@@ -37,17 +37,27 @@ public class BooleanEngine {
                     continue; 
                 } else {
                     Set<Integer> termDocs;
+
+                    // Penanganan Wildcard dengan feedback
                     if (token.contains("*")) {
+                        List<String> matched = tolerant.getWildcardMatchedTerms(token);
+                        System.out.println("[Wildcard Result] '" + token + "' matches: " + matched);
                         termDocs = tolerant.wildcardSearch(token);
                     } 
+                    // Penanganan Typo dengan feedback
                     else {
                         String corrected = tolerant.spellingCorrection(token.toLowerCase());
+                        if (!token.equalsIgnoreCase(corrected)) {
+                            System.out.println("[Typo Detected] '" + token + "' corrected to -> '" + corrected + "'");
+                        }
                         termDocs = indexer.invertedIndex.getOrDefault(corrected, new HashSet<>());
                     }
+
                     if (applyNot) {
                         termDocs = not(termDocs);
                         applyNot = false;
                     }
+
                     if (stack.isEmpty()) {
                         stack.push(termDocs);
                     } else {

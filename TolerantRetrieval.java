@@ -71,4 +71,22 @@ public class TolerantRetrieval {
             }
             return result;
         }
+
+        public List<String> getWildcardMatchedTerms(String query) {
+            List<String> matchedTerms = new ArrayList<>();
+            if (query.endsWith("*")) {
+                String prefix = query.substring(0, query.length() - 1).toLowerCase();
+                String padded = "$" + prefix;
+                if (padded.length() >= 2) {
+                    String targetBigram = padded.substring(padded.length() - 2);
+                    Set<String> candidates = kgramIndex.getOrDefault(targetBigram, new HashSet<>());
+                    for (String candidate : candidates) {
+                        if (candidate.startsWith(prefix)) {
+                            matchedTerms.add(candidate);
+                        }
+                    }
+                }
+            }
+            return matchedTerms;
+        }
     }
