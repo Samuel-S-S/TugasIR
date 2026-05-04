@@ -38,13 +38,11 @@ public class BooleanEngine {
                 } else {
                     Set<Integer> termDocs;
 
-                    // Penanganan Wildcard dengan feedback
                     if (token.contains("*")) {
                         List<String> matched = tolerant.getWildcardMatchedTerms(token);
                         System.out.println("[Wildcard Result] '" + token + "' matches: " + matched);
                         termDocs = tolerant.wildcardSearch(token);
                     } 
-                    // Penanganan Typo dengan feedback
                     else {
                         String corrected = tolerant.spellingCorrection(token.toLowerCase());
                         if (!token.equalsIgnoreCase(corrected)) {
