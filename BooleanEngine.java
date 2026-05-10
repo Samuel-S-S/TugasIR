@@ -19,7 +19,7 @@ public class BooleanEngine {
             result.removeAll(setA);
             return result;
         }
-        public Set<Integer> parseIntegratedQuery(String query, TolerantRetrieval tolerant) {
+        public Set<Integer> parseQuery(String query, TolerantRetrieval tolerant) {
             query = query.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim();
             String[] tokens = query.split("\\s+");
 

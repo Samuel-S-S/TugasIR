@@ -16,7 +16,7 @@ public class SearchEngine {
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("exit")) break;
             if (input.trim().isEmpty()) continue;
-            Set<Integer> results = booleanEngine.parseIntegratedQuery(input, tolerantEngine);
+            Set<Integer> results = booleanEngine.parseQuery(input, tolerantEngine);
             System.out.println("Hasil ditemukan di Doc IDs: " + results);
             
             for (int id : results) {
